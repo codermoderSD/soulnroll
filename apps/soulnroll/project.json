@@ -1,0 +1,52 @@
+{
+  "root": "apps/soulnroll",
+  "sourceRoot": "apps/soulnroll/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/soulnroll",
+        "main": "apps/soulnroll/src/main.ts",
+        "tsConfig": "apps/soulnroll/tsconfig.app.json",
+        "assets": ["apps/soulnroll/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/soulnroll/src/environments/environment.ts",
+              "with": "apps/soulnroll/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "soulnroll:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/soulnroll/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/soulnroll"],
+      "options": {
+        "jestConfig": "apps/soulnroll/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
