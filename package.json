@@ -10,6 +10,8 @@
   "private": true,
   "dependencies": {
     "express": "4.17.2",
+    "mongodb": "^4.4.1",
+    "randomstring": "^1.2.2",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
