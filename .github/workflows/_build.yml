@@ -7,5 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: Production
     steps:
-      - name: Build
-        run: echo Github Action Running
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - run: npm ci
